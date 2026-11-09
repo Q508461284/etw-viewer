@@ -1,0 +1,24 @@
+# Rust
+/target/
+**/target/
+
+# 编译产物
+*.pdb
+*.lib
+*.exp
+*.res
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统
+Thumbs.db
+.DS_Store
+
+# 运行时配置
+etw-viewer-config.json
+
+etw-monitor/Cargo.lock

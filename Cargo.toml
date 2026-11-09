@@ -1,0 +1,34 @@
+[package]
+name = "etw-viewer"
+version = "0.1.0"
+edition = "2024"
+description = "Windows ETW 镜像加载监控工具"
+build = "build.rs"
+
+[[bin]]
+name = "ETW-Viewer"
+path = "src/main.rs"
+
+[target.'cfg(windows)'.dependencies]
+gpui-kit = { version = "0.9.0", features = ["gpui-fast"] }
+gpui-fast = { version = "0.1.13", features = ["windows-manifest-provided-by-host"] }
+etw-monitor = { path = "etw-monitor" }
+tokio = { version = "1", features = ["macros"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+windows = { version = "0.62.2", features = [
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Foundation",
+] }
+
+# Windows 资源元数据（winresource 会自动读取）
+[package.metadata.winresource]
+ProductName = "ETW Viewer"
+FileDescription = "ETW 镜像加载监控" # 显式指定，双保险
+CompanyName = "Sunny"
+LegalCopyright = "Copyright © 2026 Sunny"
+OriginalFilename = "ETW-Viewer.exe"
+
+[build-dependencies]
+winresource = "0.1"
