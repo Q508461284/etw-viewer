@@ -15,3 +15,15 @@ cargo build --release
 \`\`\`
 
 首次启动会弹 UAC 请求管理员权限（运行时提权，非 manifest）。
+
+## License
+
+本项目采用双许可，可任选其一：
+
+- [MIT License](LICENSE-MIT)
+- [Apache License 2.0](LICENSE-APACHE)
+
+### 贡献
+
+除非你明确声明，否则任何有意提交以包含在本项目中的贡献，
+均按上述双许可条款授权，不附加任何额外条款或条件。

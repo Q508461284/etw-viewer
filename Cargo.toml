@@ -3,6 +3,7 @@ name = "etw-viewer"
 version = "0.1.0"
 edition = "2024"
 description = "Windows ETW 镜像加载监控工具"
+license = "MIT OR Apache-2.0"
 build = "build.rs"
 
 [[bin]]
