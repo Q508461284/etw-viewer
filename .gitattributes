@@ -1,0 +1,23 @@
+# 统一换行符：仓库内一律 LF，检出时按平台自动转换
+* text=auto eol=lf
+
+# 二进制文件不参与文本换行转换和 diff
+*.ico   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.exe   binary
+*.dll   binary
+*.lib   binary
+*.pdb   binary
+
+# Rust 源码强制 LF
+*.rs    text eol=lf
+*.toml  text eol=lf
+*.md    text eol=lf
+
+# Windows 批处理/PowerShell 保持 CRLF（这些文件对 CRLF 敏感）
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
