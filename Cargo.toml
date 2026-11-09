@@ -33,3 +33,22 @@ OriginalFilename = "ETW-Viewer.exe"
 
 [build-dependencies]
 winresource = "0.1"
+
+# ==================== 编译优化 ====================
+
+# 开发构建：主 crate 保持 0 优化（编译最快），依赖库优化到 2
+# 解决 gpui-kit 在 dev 下 opt-level=0 导致 UI 卡顿的问题
+[profile.dev]
+opt-level = 0
+debug = 1              # 从默认 2 降到 1，编译更快；调试变量值仍可见
+
+[profile.dev.package."*"]
+opt-level = 2          # 所有依赖（gpui-kit / windows / tokio 等）优化到 2
+
+# 发布构建：性能优先 + 体积可控
+[profile.release]
+opt-level = 3
+lto = "thin"           # 增量 LTO：编译比 fat 快很多，体积/性能收益约 80%
+codegen-units = 1      # 单 codegen unit，提升运行时性能，代价是编译变慢
+strip = "debuginfo"    # 移除调试信息，exe 体积显著减小；保留符号便于崩溃回溯
+panic = "unwind"       # 显式写出，GUI 崩时能打印错误信息（不要 abort）
